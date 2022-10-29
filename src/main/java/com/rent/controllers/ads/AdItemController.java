@@ -40,7 +40,7 @@ public class AdItemController {
         if (!file.isEmpty()) {
             try {
                 uploadFile(file, userId);
-                item.setImagePath("/images/" + userId + ".jpg");
+                item.setImagePath(" /images/" + userId + ".jpg");
             } catch (Exception e) {
                 return "Вам не удалось загрузить фото" + e.getMessage();
             }

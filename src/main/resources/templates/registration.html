@@ -30,6 +30,9 @@
             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password required">
             <label for="floatingPassword">Придумайте пароль</label>
         </div>
+        {{#Error}}
+            {{Error}}
+        {{/Error}}
         <button class="form-floating w-100 btn btn-lg btn-primary" type="submit" value="press">Зарегистрироваться</button>
         <a>Уже зарегестрированы? </a><a href="/login">Войдите</a>
     </form>

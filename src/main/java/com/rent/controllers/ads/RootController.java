@@ -16,12 +16,6 @@ public class RootController {
     @GetMapping("/")
     public String rootPage(Model model){
         Iterable<Item> items = itemRepository.findAll();
-//        System.out.println("========================================================================================");
-//        for (Item item: items
-//             ) {
-//            System.out.println(item.getId());
-//        }
-//        System.out.println("========================================================================================");
         model.addAttribute("items", items);
         return "root";
     }

@@ -23,17 +23,32 @@ public class HistoryController {
     @GetMapping("/history/{id}")
     public String historyPage(Model model, @PathVariable(value = "id") long userId){
         User user = userRepository.getById(userId);
-        List<String> rentsOwner = rentRepository.findRentItemOwner(userId);
+
+        List<ItemRent> ownerRents = getRentsOwner(userId);
+        List<ItemRent> renterRents = getRentsRenter(userId);
+
+        model.addAttribute("user", user);
+        model.addAttribute("rentsOwn", ownerRents);
+        model.addAttribute("renterRents", renterRents);
+        return "history";
+    }
+
+    private List<ItemRent> getRentsOwner(long userId){
+        List<String> rents = rentRepository.findRentItemOwner(userId);
         List<ItemRent> ownerRents = new ArrayList<>();
-        for (String param: rentsOwner){
+        for (String param: rents){
             ownerRents.add(new ItemRent(param));
         }
+        return ownerRents;
+    }
 
-//        System.out.println(rentsOwner);
-//        OwnerRentHistory rentOwner = OwnerRentHistory(rentsOwner);
-        model.addAttribute("user", user);
-        model.addAttribute("rents", ownerRents);
-        return "history";
+    private List<ItemRent> getRentsRenter(long userId){
+        List<String> rents = rentRepository.findRentItemRenter(userId);
+        List<ItemRent> renterRents = new ArrayList<>();
+        for (String param: rents){
+            renterRents.add(new ItemRent(param));
+        }
+        return renterRents;
     }
 
 }

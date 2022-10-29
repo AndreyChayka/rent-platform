@@ -1,4 +1,4 @@
-package com.rent.controllers;
+package com.rent.controllers.account;
 
 import com.rent.models.Role;
 import com.rent.models.User;

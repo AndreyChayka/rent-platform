@@ -17,8 +17,6 @@ public class DeleteAdController {
     @Autowired
     ItemRepository itemRepository;
 
-    @Autowired
-    UserRepository userRepository;
 
     @GetMapping("/delete-item/{id}")
     public String deleteItem(@PathVariable(value = "id") long itemId) throws IOException {

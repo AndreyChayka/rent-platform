@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-public class MyRentController {
+public class MyItemsController {
     @Autowired
     ItemRepository itemRepository;
     @Autowired
@@ -23,7 +23,7 @@ public class MyRentController {
         User user = userRepository.getById(userId);
         model.addAttribute("items", items);
         model.addAttribute("user", user);
-        return "myRents";
+        return "myItems";
     }
 
 }

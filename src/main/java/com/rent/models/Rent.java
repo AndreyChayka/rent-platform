@@ -1,6 +1,7 @@
 package com.rent.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -10,51 +11,65 @@ public class Rent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(name = "item_id")
-    @ManyToOne
     @JoinColumn(name = "item_id", nullable = false)
-    private Item item;
+    private long item;
 
-//    @Column(name = "renter_id")
-    @ManyToOne
     @JoinColumn(name = "renter_id", nullable = false)
-    private User renter;
+    private long renter;
 
     @Column
-    private Date startDate = new Date();
+    private LocalDate startDate;
 
     @Column
-    private Date endDate = new Date();
+    private LocalDate endDate;
 
-    public Item getItem() {
+    public Rent(){}
+
+    public Rent(Long itemId, Long renter, LocalDate date_1, LocalDate date_2) {
+        this.item = itemId;
+        this.renter = renter;
+        this.startDate = date_1;
+        this.endDate = date_2;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public long getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(long item) {
         this.item = item;
     }
 
-    public User getRenter() {
+    public long getRenter() {
         return renter;
     }
 
-    public void setRenter(User renter) {
+    public void setRenter(long renter) {
         this.renter = renter;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
+
 }
